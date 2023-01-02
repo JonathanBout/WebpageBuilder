@@ -2,83 +2,84 @@
 
 namespace WebpageBuilder.HTML
 {
-    public class HTMLElement : IEnumerable<HTMLElement>
-    {
-        public string ElementName { get; init; } = "div";
-        public Dictionary<string, string> Modifiers { get; init; } = new();
-        List<HTMLElement> ChildElements { get; init; } = new();
-        string Text { get; set; } = "";
+	public class HTMLElement : IEnumerable<HTMLElement>
+	{
+		public string Name { get; init; } = "div";
+		public Dictionary<string, string> Atributes { get; init; } = new();
+		public List<HTMLElement> Elements { get; init; } = new();
+		string Text { get; set; } = "";
 
-        public bool HasElements => ChildElements.Any();
-        public bool HasText => !string.IsNullOrEmpty(Text);
+		public bool HasElements => Elements.Any();
+		public bool HasText => !string.IsNullOrEmpty(Text);
 
-        public HTMLElement() { }
-        public HTMLElement(string text)
-        {
-            Text = text;
-        }
+		public HTMLElement() { }
 
-        public HTMLElement(IEnumerable<HTMLElement> elements)
-        {
-            ChildElements = elements.ToList();
-        }
+		public HTMLElement(string name, string text)
+		{
+			Name = name;
+			Text = text;
+		}
 
-        public HTMLElement[] GetContent()
-        {
-            return ChildElements.ToArray();
-        }
+		public HTMLElement[] GetContent()
+		{
+			return Elements.ToArray();
+		}
 
-        public string GetText()
-        {
-            if (string.IsNullOrEmpty(Text))
-            {
-                return string.Join("", ChildElements);
-            }
-            return Text;
-        }
+		public string GetText()
+		{
+			if (string.IsNullOrEmpty(Text))
+			{
+				return string.Join("", Elements);
+			}
+			return Text;
+		}
 
-        public void SetText(string text)
-        {
-            ChildElements.Clear();
-            Text = text;
-        }
+		public void SetText(string text)
+		{
+			Elements.Clear();
+			Text = text;
+		}
 
-        public void AddElement(HTMLElement element)
-        {
-            if (string.IsNullOrEmpty(Text))
-            {
-                ChildElements.Add(element);
-            }
-            else
-            {
-                ChildElements.Add(new HTMLElement()
-                {
-                    Text = Text
-                });
-                ChildElements.Add(element);
-                Text = "";
-            }
-        }
+		public void AddElement(HTMLElement element)
+		{
+			if (string.IsNullOrEmpty(Text))
+			{
+				Elements.Add(element);
+			}
+			else
+			{
+				Elements.Add(new HTMLElement()
+				{
+					Text = Text
+				});
+				Elements.Add(element);
+				Text = "";
+			}
+		}
 
-        public void RemoveElement(int index)
-        {
-            ChildElements.RemoveAt(index);
-        }
+		public void RemoveElement(int index)
+		{
+			Elements.RemoveAt(index);
+		}
 
-        public override string ToString()
-        {
-            string modifiers = "";
-            if (Modifiers.Any())
-            {
-                foreach (var modifier in Modifiers)
-                {
-                    modifiers += string.Format(" {0}='{1}'", modifier.Key, modifier.Value);
-                }
-            }
-            return string.Format("<{0}{1}>{2}</{0}>", ElementName, modifiers, GetText());
-        }
+		public override string ToString()
+		{
+			if (string.IsNullOrWhiteSpace(Name))
+			{
+				return Text;
+			}
+			string modifiers = "";
+			if (Atributes.Any())
+			{
+				foreach (var modifier in Atributes)
+				{
+					modifiers += string.Format(" {0}='{1}'", modifier.Key, modifier.Value);
+				}
+			}
+			return string.Format("<{0}{1}>{2}</{0}>", Name, modifiers, GetText());
+		}
 
-        public IEnumerator<HTMLElement> GetEnumerator() => ChildElements.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-    }
+		public IEnumerator<HTMLElement> GetEnumerator() => Elements.GetEnumerator();
+		IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+	}
 }

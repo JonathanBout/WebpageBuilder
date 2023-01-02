@@ -1,6 +1,6 @@
 ﻿namespace WebpageBuilder.CSS
 {
-    public class PageCSS
+    public class CSSFile
     {
         public List<CSSRule> Rules { get; init; } = new();
         public override string ToString()

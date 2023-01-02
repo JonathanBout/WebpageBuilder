@@ -6,7 +6,7 @@ namespace WebpageBuilder
 {
     public class Webpage
 	{
-		public PageHTML PageHTML { get; } = new();
-		public PageCSS PageCSS { get; } = new();
+		public HTMLFile PageHTML { get; } = new();
+		public CSSFile PageCSS { get; } = new();
 	}
 }

@@ -1,11 +1,11 @@
 ﻿namespace WebpageBuilderTests
 {
-	public class PageCSSTests
+	public class CSSFileTests
 	{
 		[Test]
 		public void ComplexSelectorCSS()
 		{
-			var css = new PageCSS();
+			var css = new WebpageBuilder.CSS.CSSFile();
 			css.Rules.Add(new CSSRule()
 			{
 				Selector = CSSSelector.Element("html").DirectChild(".classname").FirstChild()
@@ -24,7 +24,7 @@
 		[Test]
 		public void SingleSelectorCSS()
 		{
-			var css = new PageCSS();
+			var css = new WebpageBuilder.CSS.CSSFile();
 			css.Rules.Add(new CSSRule()
 			{
 				Selector = CSSSelector.HTML,
