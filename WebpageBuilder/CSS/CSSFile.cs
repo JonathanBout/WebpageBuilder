@@ -5,6 +5,7 @@
     /// </summary>
     public class CSSFile
     {
+        public string FileName { get; set; } = "styles.css";
         /// <summary>
         /// All <see cref="CSSRule"/>s for this <see cref="CSSFile"/>.
         /// </summary>

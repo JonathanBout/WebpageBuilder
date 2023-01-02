@@ -5,6 +5,8 @@
 	/// </summary>
 	public class HTMLFile
 	{
+		public string FileName { get; set; } = "index.html";
+		public bool AddStylesReference { get; set; } = true;
 		readonly HTMLElement _head = new()
 		{
 			Name = "head"
