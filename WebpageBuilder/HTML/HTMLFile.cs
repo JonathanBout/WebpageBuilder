@@ -1,5 +1,8 @@
 ﻿namespace WebpageBuilder.HTML
 {
+	/// <summary>
+	/// The HTML File class
+	/// </summary>
 	public class HTMLFile
 	{
 		readonly HTMLElement _head = new()
@@ -7,6 +10,9 @@
 			Name = "head"
 		};
 
+		/// <summary>
+		/// The <c>Head</c> element.
+		/// </summary>
 		public HTMLElement Head
 		{
 			get => _head; 
@@ -37,6 +43,9 @@
 			Name = "body"
 		};
 
+		/// <summary>
+		/// The <c>Body</c> element
+		/// </summary>
 		public HTMLElement Body
 		{
 			get => _body;
@@ -64,6 +73,10 @@
 			}
 		}
 
+		/// <summary>
+		/// Converts this <see cref="HTMLFile"/> to its <see cref="string"/> representation.
+		/// </summary>
+		/// <returns>This HTML File as a string</returns>
 		public override string ToString()
 		{
 			return Head.ToString() + Body.ToString();
