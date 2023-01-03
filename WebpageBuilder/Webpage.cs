@@ -19,27 +19,22 @@ namespace WebpageBuilder
 		/// </summary>
 		public CSSFile PageCSS { get; } = new();
 
-		public (FileInfo htmlFile, FileInfo cssFile) SaveToFile(string directoryPath)
+		/// <summary>
+		/// Saves the HTML and CSS files to <paramref name="directoryPath"/>.
+		/// </summary>
+		/// <param name="directoryPath">The path to save the file to</param>
+		public void SaveToFile(string directoryPath)
 		{
 			var directory = new DirectoryInfo(directoryPath);
 			if (!directory.Exists)
 			{
 				directory.Create();
 			}
-			var htmlFile = new FileInfo(Path.Join(directoryPath, "index.html"));
-			var cssFile  = new FileInfo(Path.Join(directoryPath, "styles.css"));
-			if (!htmlFile.Exists)
-			{
-				htmlFile.Create();
-			}
-			if (!cssFile.Exists)
-			{
-				cssFile.Create();
-			}
+			var htmlFile = Path.Join(directoryPath, "index.html");
+			var cssFile  = Path.Join(directoryPath, "styles.css");
 
-			File.WriteAllText(htmlFile.FullName, PageHTML.ToString());
-			File.WriteAllText(cssFile .FullName, PageCSS .ToString());
-			return (htmlFile, cssFile);
+			File.WriteAllText(htmlFile, PageHTML.ToString());
+			File.WriteAllText(cssFile , PageCSS .ToString());
 		}
 	}
 }

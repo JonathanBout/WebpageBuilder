@@ -5,6 +5,9 @@
 	/// </summary>
 	public class HTMLFile
 	{
+		/// <summary>
+		/// Gets ot sets how the file should be called, once saved. Default is <c>index.html</c>.
+		/// </summary>
 		public string FileName { get; set; } = "index.html";
 		public bool AddStylesReference { get; set; } = true;
 		readonly HTMLElement _head = new()

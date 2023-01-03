@@ -5,6 +5,9 @@
     /// </summary>
     public class CSSFile
     {
+        /// <summary>
+        /// Gets or sets how the file should be called, once saved. Default is <c>styles.css</c>.
+        /// </summary>
         public string FileName { get; set; } = "styles.css";
         /// <summary>
         /// All <see cref="CSSRule"/>s for this <see cref="CSSFile"/>.
