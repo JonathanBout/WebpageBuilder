@@ -1,5 +1,5 @@
 # WebpageBuilder
-WebpageBuilder is a not-yet published package* that allows you to build HTML and CSS in C#.
+WebpageBuilder is a not-yet published package* that allows you to build HTML and CSS in C#. I also made this repo to play around with Github Actions.
 <br/>
 <br/>
 <br/>
